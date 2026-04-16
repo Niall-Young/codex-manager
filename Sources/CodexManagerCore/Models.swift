@@ -152,7 +152,7 @@ public enum CodexManagerError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .codexExecutableNotFound:
-            return "Codex executable was not found."
+            return "Codex executable was not found. Install Codex desktop app in /Applications or ~/Applications."
         case let .invalidAppServerResponse(message):
             return "Invalid Codex app-server response: \(message)"
         case let .appServerError(message):

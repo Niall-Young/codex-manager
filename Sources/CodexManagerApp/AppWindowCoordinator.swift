@@ -35,6 +35,7 @@ final class AppWindowCoordinator {
             resizable: false,
             rootView: AnyView(rootView)
         )
+        configureAddAccountWindow(controller.window)
         addAccountWindowController = controller
         present(controller)
     }
@@ -74,6 +75,13 @@ final class AppWindowCoordinator {
         window.setFrameAutosaveName("CodexManager.\(title)")
         window.contentViewController = NSHostingController(rootView: rootView)
         return NSWindowController(window: window)
+    }
+
+    private func configureAddAccountWindow(_ window: NSWindow?) {
+        guard let window else { return }
+        window.level = .floating
+        window.collectionBehavior.insert(.fullScreenAuxiliary)
+        window.hidesOnDeactivate = false
     }
 
     private func present(_ controller: NSWindowController) {

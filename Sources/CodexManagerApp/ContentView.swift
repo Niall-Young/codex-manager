@@ -13,7 +13,6 @@ private enum AppTypography {
 struct ContentView: View {
     @EnvironmentObject private var model: AppViewModel
     @State private var showingInlineSettings = false
-    @State private var showingAddAccount = false
     private let refreshTimer = Timer.publish(every: 20, on: .main, in: .common).autoconnect()
 
     var body: some View {
@@ -34,10 +33,6 @@ struct ContentView: View {
         }
         .onReceive(refreshTimer) { _ in
             model.refreshCurrentSession()
-        }
-        .sheet(isPresented: $showingAddAccount) {
-            AddAccountView(appModel: model)
-                .environmentObject(model)
         }
     }
 
@@ -160,7 +155,7 @@ struct ContentView: View {
                     .foregroundStyle(.secondary)
                 Spacer()
                 Button {
-                    showingAddAccount = true
+                    AppWindowCoordinator.shared.showAddAccount(model: model)
                 } label: {
                     Image(systemName: "plus")
                 }
@@ -174,6 +169,13 @@ struct ContentView: View {
                     subtitle: model.strings.text(.noManagedSubtitle)
                 )
             } else {
+                if let currentSessionProfile = model.currentSessionProfile {
+                    CurrentSessionRow(
+                        profile: currentSessionProfile,
+                        strings: model.strings,
+                        importAction: { model.importCurrentAccount() }
+                    )
+                }
                 ForEach(model.profiles) { profile in
                     ProfileRow(
                         profile: profile,
@@ -329,6 +331,49 @@ struct ProfileRow: View {
         .padding(.vertical, 8)
         .padding(.horizontal, 10)
         .background(isActive ? Color.white.opacity(0.05) : Color.clear, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+    }
+}
+
+struct CurrentSessionRow: View {
+    let profile: ManagedProfile
+    let strings: Strings
+    let importAction: () -> Void
+
+    var body: some View {
+        HStack(spacing: 12) {
+            ZStack {
+                Circle()
+                    .fill(Color.accentColor.opacity(0.14))
+                Image(systemName: "person.crop.circle.badge.questionmark")
+                    .font(.system(size: 11, weight: .bold))
+                    .foregroundStyle(Color.accentColor)
+            }
+            .frame(width: 24, height: 24)
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(profile.displayName)
+                    .font(AppTypography.title)
+                    .lineLimit(1)
+                Text("当前会话，尚未加入托管列表")
+                    .font(AppTypography.body)
+                    .foregroundStyle(.secondary)
+            }
+
+            Spacer()
+
+            Button(action: importAction) {
+                Label(strings.text(.importCurrent), systemImage: "square.and.arrow.down")
+                    .labelStyle(.iconOnly)
+            }
+            .buttonStyle(GlassIconButtonStyle(size: 26))
+            .help(strings.text(.importCurrent))
+        }
+        .padding(10)
+        .background(Color.accentColor.opacity(0.05), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .strokeBorder(Color.accentColor.opacity(0.22))
+        }
     }
 }
 

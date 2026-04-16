@@ -79,8 +79,7 @@ public final class CodexAccountService {
         accountInfo: AccountInfo,
         usage: RateLimitReadResult?
     ) throws -> ManagedProfile {
-        guard !accountInfo.requiresOpenAIAuth,
-              let hash = try authFileManager.accountIDHash(codexHome: temporaryCodexHome) else {
+        guard let hash = try authFileManager.accountIDHash(codexHome: temporaryCodexHome) else {
             throw CodexManagerError.loginNotCompleted
         }
 

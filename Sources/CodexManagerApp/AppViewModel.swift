@@ -65,16 +65,14 @@ final class AppViewModel: ObservableObject {
             let liveAccount = try? await readAccountForCurrentCodexHome()
             let liveUsage = try? await accountService.readRateLimits(codexHome: paths.currentCodexHome)
 
-            var matchedProfile = currentHash.flatMap { store.profile(accountIDHash: $0) }
-            if matchedProfile == nil, let email = liveAccount?.email {
-                matchedProfile = store.profiles.first(where: { $0.email == email })
-            }
-
+            let matchedProfile = currentHash.flatMap { store.profile(accountIDHash: $0) }
             if var matchedProfile {
                 matchedProfile.accountIDHash = currentHash ?? matchedProfile.accountIDHash
-                matchedProfile.email = liveAccount?.email ?? matchedProfile.email
                 matchedProfile.planType = liveAccount?.planType ?? matchedProfile.planType
-                matchedProfile.displayName = liveAccount?.email ?? matchedProfile.displayName
+                if matchedProfile.email == nil, let email = liveAccount?.email {
+                    matchedProfile.email = email
+                    matchedProfile.displayName = email
+                }
                 matchedProfile.lastUsageSnapshot = liveUsage?.preferredCodexSnapshot ?? matchedProfile.lastUsageSnapshot
                 matchedProfile.lastRefreshedAt = liveUsage == nil ? matchedProfile.lastRefreshedAt : Date()
                 matchedProfile.lastError = nil
@@ -93,21 +91,25 @@ final class AppViewModel: ObservableObject {
                 return
             }
 
-            if let liveAccount, !liveAccount.requiresOpenAIAuth {
+            // If the current auth hash does not belong to a managed profile,
+            // never fall back to showing the last active managed account.
+            activeProfile = nil
+            currentProfileID = nil
+            localUsage = usageEstimator.estimate(
+                profileID: nil,
+                activations: store.database.activations
+            )
+
+            if currentHash != nil || (liveAccount != nil && liveAccount?.requiresOpenAIAuth == false) {
                 currentSessionProfile = ManagedProfile(
                     id: "current-session",
-                    displayName: liveAccount.email ?? "ChatGPT Account",
-                    email: liveAccount.email,
-                    planType: liveAccount.planType,
+                    displayName: liveAccount?.email ?? "Current Account",
+                    email: liveAccount?.email,
+                    planType: liveAccount?.planType,
                     accountIDHash: currentHash,
                     codexHomePath: paths.currentCodexHome.path,
                     lastRefreshedAt: liveUsage == nil ? nil : Date(),
                     lastUsageSnapshot: liveUsage?.preferredCodexSnapshot
-                )
-                currentProfileID = nil
-                localUsage = usageEstimator.estimate(
-                    profileID: nil,
-                    activations: store.database.activations
                 )
             } else {
                 currentSessionProfile = nil
@@ -139,12 +141,6 @@ final class AppViewModel: ObservableObject {
                 }
 
                 let account = try? await readAccountForCurrentCodexHome()
-                if account?.requiresOpenAIAuth == true {
-                    statusMessage = "Current Codex login is not authenticated."
-                    try authFileManager.deleteCodexHome(finalHome)
-                    return
-                }
-
                 let usage = try? await accountService.readRateLimits(codexHome: finalHome)
                 var profile = ManagedProfile(
                     id: id,

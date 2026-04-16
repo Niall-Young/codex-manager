@@ -77,8 +77,14 @@ struct Strings {
         case addAccountDescription
         case signInWithChatGPT
         case switchAfterAdding
+        case accountAlreadyManaged
+        case addedAccountMessage
         case startingLogin
         case code
+        case copyCode
+        case copiedCode
+        case finishSignInTitle
+        case finishSignInDescription
         case openVerificationPage
         case waitingForLogin
         case savingAccount
@@ -145,8 +151,14 @@ struct Strings {
             case .addAccountDescription: "You need to use a ChatGPT account to sign in."
             case .signInWithChatGPT: "Sign In"
             case .switchAfterAdding: "Switch after adding"
+            case .accountAlreadyManaged: "This account already exists. The existing account was updated."
+            case .addedAccountMessage: "Account added successfully."
             case .startingLogin: "Starting Codex login..."
             case .code: "Code"
+            case .copyCode: "Copy code"
+            case .copiedCode: "Copied"
+            case .finishSignInTitle: "Finish sign in"
+            case .finishSignInDescription: "Use this code on the verification page, then return here. This window will stay open while Codex completes login."
             case .openVerificationPage: "Open verification page"
             case .waitingForLogin: "Waiting for login..."
             case .savingAccount: "Saving account..."
@@ -215,8 +227,14 @@ struct Strings {
             case .addAccountDescription: "你需要使用 ChatGPT 账号来进行登录。"
             case .signInWithChatGPT: "登录"
             case .switchAfterAdding: "添加后立即切换"
+            case .accountAlreadyManaged: "该账号已存在，已更新现有账号。"
+            case .addedAccountMessage: "账号添加成功。"
             case .startingLogin: "正在启动 Codex 登录..."
             case .code: "验证码"
+            case .copyCode: "复制验证码"
+            case .copiedCode: "已复制"
+            case .finishSignInTitle: "完成登录"
+            case .finishSignInDescription: "在验证页面输入这个验证码，然后回到这里。这个窗口会保持打开，直到 Codex 完成登录。"
             case .openVerificationPage: "打开验证页面"
             case .waitingForLogin: "等待登录完成..."
             case .savingAccount: "正在保存账号..."
