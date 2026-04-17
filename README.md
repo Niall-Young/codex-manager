@@ -207,4 +207,8 @@ bash scripts/package-app.sh
 
 ## License
 
-如果你准备开源，建议再补一个明确的许可证文件，例如 `MIT`。
+本项目源码公开，按 `PolyForm Noncommercial License 1.0.0` 授权。
+
+你可以在非商业用途下使用、复制、修改和分发本项目。商业使用不在该许可证授权范围内，如需商业授权，请先联系作者。
+
+完整条款见 [`LICENSE`](./LICENSE)。
