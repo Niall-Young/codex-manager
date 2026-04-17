@@ -22,7 +22,9 @@ final class AppViewModel: ObservableObject {
     private let accountService: CodexAccountService
     private let switchService: SwitchService
     private let usageEstimator: LocalUsageEstimator
+    private var refreshTimer: Timer?
     private static let languageDefaultsKey = "language"
+    private static let menuBarRefreshInterval: TimeInterval = 20
 
     init() {
         do {
@@ -38,9 +40,15 @@ final class AppViewModel: ObservableObject {
             cleanupIncompleteProfiles()
             cleanupTemporaryProfiles()
             reload()
+            refreshCurrentSession()
+            startRefreshTimer()
         } catch {
             fatalError("Failed to initialize Codex Manager: \(error.localizedDescription)")
         }
+    }
+
+    deinit {
+        refreshTimer?.invalidate()
     }
 
     var profileStore: ProfileStore { store }
@@ -48,6 +56,11 @@ final class AppViewModel: ObservableObject {
     var codexPaths: CodexPaths { paths }
     var strings: Strings { Strings(language: language) }
     var displayedCurrentProfile: ManagedProfile? { currentSessionProfile ?? activeProfile }
+    var menuBarQuotaText: String {
+        guard let snapshot = displayedCurrentProfile?.lastUsageSnapshot else { return "--" }
+        guard let window = preferredMenuBarWindow(in: snapshot) else { return "--" }
+        return "\(window.remainingPercent)%"
+    }
 
     func reload() {
         profiles = store.profiles
@@ -257,6 +270,34 @@ final class AppViewModel: ObservableObject {
 
     func openOfficialUsage() {
         NSWorkspace.shared.open(URL(string: "https://chatgpt.com/codex/settings/usage")!)
+    }
+
+    private func startRefreshTimer() {
+        refreshTimer?.invalidate()
+        refreshTimer = Timer.scheduledTimer(withTimeInterval: Self.menuBarRefreshInterval, repeats: true) { [weak self] _ in
+            Task { @MainActor [weak self] in
+                self?.refreshCurrentSession()
+            }
+        }
+    }
+
+    private func preferredMenuBarWindow(in snapshot: RateLimitSnapshot) -> RateLimitWindow? {
+        if snapshot.primary?.windowDurationMins == 300 {
+            return snapshot.primary
+        }
+        if snapshot.secondary?.windowDurationMins == 300 {
+            return snapshot.secondary
+        }
+
+        let windows = [snapshot.primary, snapshot.secondary].compactMap { $0 }
+        return windows.min { lhs, rhs in
+            menuBarWindowDistance(for: lhs) < menuBarWindowDistance(for: rhs)
+        }
+    }
+
+    private func menuBarWindowDistance(for window: RateLimitWindow) -> Int64 {
+        guard let duration = window.windowDurationMins else { return .max }
+        return abs(duration - 300)
     }
 
     private func cleanupIncompleteProfiles() {

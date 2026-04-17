@@ -41,13 +41,6 @@ struct ContentView: View {
             header
             profileList
             actions
-            if let message = model.statusMessage {
-                Text(message)
-                    .font(AppTypography.body)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(3)
-                    .padding(.top, -6)
-            }
         }
     }
 
