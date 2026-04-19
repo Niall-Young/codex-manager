@@ -20,7 +20,10 @@ let package = Package(
         .executableTarget(
             name: "CodexManagerApp",
             dependencies: ["CodexManagerCore"],
-            path: "Sources/CodexManagerApp"
+            path: "Sources/CodexManagerApp",
+            resources: [
+                .process("Resources")
+            ]
         ),
         .executableTarget(
             name: "CodexManagerSelfTest",

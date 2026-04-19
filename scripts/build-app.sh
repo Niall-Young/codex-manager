@@ -11,11 +11,12 @@ CONTENTS="$APP_DIR/Contents"
 MACOS="$CONTENTS/MacOS"
 RESOURCES="$CONTENTS/Resources"
 ICONSET="$ROOT/.build/AppIcon.iconset"
+ICON_SOURCE="$ROOT/Assets/AppIcon.png"
 
 rm -rf "$APP_DIR"
 mkdir -p "$MACOS" "$RESOURCES"
 cp "$ROOT/.build/release/CodexManager" "$MACOS/Codex Manager"
-swift "$ROOT/scripts/generate-app-icon.swift" "$ICONSET"
+swift "$ROOT/scripts/generate-app-icon.swift" "$ICON_SOURCE" "$ICONSET"
 /usr/bin/iconutil -c icns "$ICONSET" -o "$RESOURCES/AppIcon.icns"
 
 cat > "$CONTENTS/Info.plist" <<'PLIST'

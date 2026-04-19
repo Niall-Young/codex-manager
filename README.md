@@ -164,7 +164,7 @@ bash scripts/build-app.sh
 
 ## 分发给朋友使用
 
-项目已经包含图标生成和打包脚本。
+项目已经包含图标生成和打包脚本，应用图标源文件位于 `Assets/AppIcon.png`。
 
 ### 一键打包
 
@@ -212,7 +212,7 @@ bash scripts/package-app.sh
 ## 已知说明
 
 - 菜单栏图标使用 SF Symbols。
-- 应用图标会在打包时自动生成。
+- 应用图标会在打包时基于 `Assets/AppIcon.png` 自动生成。
 - `.build/` 是构建产物，不应提交到仓库。
 
 ## License
