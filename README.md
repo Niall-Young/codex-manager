@@ -4,6 +4,16 @@
 
 它的核心目的不是“多开”或者“轮换”，而是把每个账号的本地 `CODEX_HOME` 隔离保存，并在你需要时安全切换当前正在使用的账号。
 
+## 界面预览
+
+### 菜单栏状态
+
+![Codex Manager 菜单栏海报图](./docs/images/menubar-poster.svg)
+
+### 展开后的主弹窗
+
+![Codex Manager 主弹窗海报图](./docs/images/popup-poster.svg)
+
 ## 这是什么
 
 这个应用适合下面这些场景：

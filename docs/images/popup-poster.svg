@@ -1,0 +1,103 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="60" x2="1480" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#17263A"/>
+      <stop offset="0.46" stop-color="#233E59"/>
+      <stop offset="1" stop-color="#6E513D"/>
+    </linearGradient>
+    <linearGradient id="window" x1="560" y1="140" x2="1270" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#141B25" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#202833" stop-opacity="0.92"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="1600" height="900" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="24"/>
+      <feGaussianBlur stdDeviation="28"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.34 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <text x="110" y="150" fill="white" fill-opacity="0.96" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="66" font-weight="700">展开后的主弹窗</text>
+  <text x="110" y="204" fill="white" fill-opacity="0.66" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="28">按 `ContentView` 的结构整理成更稳的双栏海报，避免遮挡和底部溢出。</text>
+
+  <rect x="110" y="278" width="328" height="302" rx="28" fill="#0D141D" fill-opacity="0.26" stroke="white" stroke-opacity="0.10"/>
+  <text x="144" y="338" fill="#9FCCFF" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="25" font-weight="700">这个窗口里有什么</text>
+  <text x="144" y="408" fill="white" fill-opacity="0.80" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="27">当前识别账号</text>
+  <text x="144" y="462" fill="white" fill-opacity="0.80" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="27">剩余额度卡片</text>
+  <text x="144" y="516" fill="white" fill-opacity="0.80" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="27">本机估算</text>
+  <text x="144" y="570" fill="white" fill-opacity="0.80" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="27">账号列表与切换动作</text>
+
+  <g filter="url(#shadow)">
+    <rect x="520" y="120" width="770" height="660" rx="42" fill="url(#window)" stroke="white" stroke-opacity="0.12"/>
+  </g>
+
+  <circle cx="574" cy="161" r="7" fill="#FF5F57"/>
+  <circle cx="598" cy="161" r="7" fill="#FEBC2E"/>
+  <circle cx="622" cy="161" r="7" fill="#28C840"/>
+
+  <text x="574" y="218" fill="white" fill-opacity="0.95" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="31" font-weight="700">Codex Manager</text>
+
+  <circle cx="616" cy="294" r="42" fill="#67ABFF" fill-opacity="0.28"/>
+  <path d="M616 269C626.493 269 635 277.507 635 288C635 294.192 632.031 299.691 627.439 303.151C632.119 305.98 635.285 311.107 635.774 317.009L635.814 317.492H596.186C596.49 311.246 599.751 305.758 604.561 303.151C599.969 299.691 597 294.192 597 288C597 277.507 605.507 269 616 269Z" fill="white"/>
+  <text x="674" y="288" fill="white" fill-opacity="0.96" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="28" font-weight="700">alice@example.com</text>
+  <text x="674" y="324" fill="white" fill-opacity="0.60" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="21">当前识别账号</text>
+  <rect x="1110" y="270" width="108" height="38" rx="19" fill="white" fill-opacity="0.08" stroke="white" stroke-opacity="0.10"/>
+  <text x="1140" y="295" fill="white" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="17" font-weight="700">TEAM</text>
+
+  <rect x="574" y="366" width="662" height="202" rx="24" fill="white" fill-opacity="0.05" stroke="white" stroke-opacity="0.08"/>
+  <text x="606" y="410" fill="white" fill-opacity="0.58" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18">剩余额度</text>
+
+  <text x="606" y="462" fill="white" fill-opacity="0.84" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20">Primary</text>
+  <text x="1138" y="462" fill="#6FD994" font-family="-apple-system, BlinkMacSystemFont, monospace" font-size="22" font-weight="700">72%</text>
+  <rect x="606" y="478" width="558" height="12" rx="6" fill="white" fill-opacity="0.08"/>
+  <rect x="606" y="478" width="402" height="12" rx="6" fill="#6FD994"/>
+
+  <text x="606" y="522" fill="white" fill-opacity="0.84" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20">Secondary</text>
+  <text x="1138" y="522" fill="#F3C55D" font-family="-apple-system, BlinkMacSystemFont, monospace" font-size="22" font-weight="700">24%</text>
+  <rect x="606" y="538" width="558" height="12" rx="6" fill="white" fill-opacity="0.08"/>
+  <rect x="606" y="538" width="134" height="12" rx="6" fill="#F3C55D"/>
+
+  <text x="606" y="608" fill="white" fill-opacity="0.58" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18">本机估算</text>
+  <text x="982" y="608" fill="white" fill-opacity="0.74" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20">182,400 tokens · 37 threads</text>
+
+  <text x="574" y="650" fill="white" fill-opacity="0.52" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18">Accounts</text>
+
+  <rect x="574" y="670" width="662" height="60" rx="18" fill="#5AABFF" fill-opacity="0.10" stroke="#5AABFF" stroke-opacity="0.24"/>
+  <circle cx="608" cy="700" r="13" fill="#5AABFF" fill-opacity="0.18"/>
+  <path d="M608 694C612.418 694 616 697.582 616 702C616 704.608 614.75 706.924 612.816 708.383C614.787 709.575 616.12 711.736 616.326 714.223L616.343 714.427H599.657C599.785 711.795 601.158 709.484 603.184 708.383C601.25 706.924 600 704.608 600 702C600 697.582 603.582 694 608 694Z" fill="#80BEFF"/>
+  <text x="632" y="696" fill="white" fill-opacity="0.92" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="19" font-weight="700">alice@example.com</text>
+  <text x="632" y="717" fill="white" fill-opacity="0.56" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="15">当前会话，尚未加入托管列表</text>
+  <rect x="1170" y="683" width="40" height="34" rx="13" fill="white" fill-opacity="0.08"/>
+  <path d="M1182 700H1198" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M1190 692V708" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+
+  <rect x="574" y="738" width="662" height="60" rx="18" fill="white" fill-opacity="0.035"/>
+  <circle cx="608" cy="768" r="13" fill="#8FD2A1" fill-opacity="0.18"/>
+  <path d="M602 768L606 772L614 764" stroke="#7ADC95" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="632" y="764" fill="white" fill-opacity="0.92" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="19" font-weight="700">work@example.com</text>
+  <text x="632" y="785" fill="white" fill-opacity="0.56" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="15">work@example.com · 81%</text>
+  <circle cx="1102" cy="768" r="16" fill="white" fill-opacity="0.08"/>
+  <path d="M1102 760V776" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M1094 768H1110" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="1148" cy="768" r="16" fill="white" fill-opacity="0.08"/>
+  <path d="M1140 768H1156" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="1194" cy="768" r="16" fill="white" fill-opacity="0.08"/>
+  <path d="M1188 762L1200 774" stroke="#FF8C8C" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M1200 762L1188 774" stroke="#FF8C8C" stroke-width="2.2" stroke-linecap="round"/>
+
+  <rect x="574" y="820" width="156" height="42" rx="16" fill="white" fill-opacity="0.08" stroke="white" stroke-opacity="0.10"/>
+  <text x="619" y="847" fill="white" fill-opacity="0.92" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700">导入当前</text>
+  <rect x="746" y="820" width="112" height="42" rx="16" fill="white" fill-opacity="0.08" stroke="white" stroke-opacity="0.10"/>
+  <text x="786" y="847" fill="white" fill-opacity="0.92" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700">设置</text>
+  <circle cx="1212" cy="841" r="21" fill="white" fill-opacity="0.08" stroke="white" stroke-opacity="0.10"/>
+  <path d="M1212 830V842" stroke="white" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M1205 846C1207 850 1210 852 1212 852C1214 852 1217 850 1219 846" stroke="white" stroke-width="2.6" stroke-linecap="round"/>
+
+  <text x="110" y="842" fill="white" fill-opacity="0.56" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="22">Poster 02 · Popup overview</text>
+</svg>

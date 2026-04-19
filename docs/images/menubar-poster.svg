@@ -1,0 +1,66 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="180" y1="60" x2="1430" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#152338"/>
+      <stop offset="0.45" stop-color="#214362"/>
+      <stop offset="1" stop-color="#6D523F"/>
+    </linearGradient>
+    <linearGradient id="card" x1="960" y1="170" x2="1450" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10161F" stop-opacity="0.94"/>
+      <stop offset="1" stop-color="#1A212B" stop-opacity="0.88"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="1600" height="900" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="18"/>
+      <feGaussianBlur stdDeviation="24"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.28 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <rect x="26" y="18" width="1548" height="46" rx="18" fill="#0D1014" fill-opacity="0.45" stroke="white" stroke-opacity="0.10"/>
+
+  <text x="110" y="48" fill="white" fill-opacity="0.80" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="21" font-weight="600">Finder</text>
+  <text x="188" y="48" fill="white" fill-opacity="0.62" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20">File</text>
+  <text x="240" y="48" fill="white" fill-opacity="0.62" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20">Edit</text>
+  <text x="295" y="48" fill="white" fill-opacity="0.62" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20">View</text>
+
+  <g filter="url(#shadow)">
+    <rect x="1386" y="27" width="104" height="28" rx="14" fill="white" fill-opacity="0.10" stroke="white" stroke-opacity="0.12"/>
+    <path d="M1407 34L1416 41L1407 48" stroke="#E9EEF5" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M1421 48L1412 41L1421 34" stroke="#E9EEF5" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1435" y="47" fill="white" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="19" font-weight="700">72%</text>
+  </g>
+
+  <text x="114" y="196" fill="white" fill-opacity="0.96" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="64" font-weight="700">菜单栏状态预览</text>
+  <text x="114" y="246" fill="white" fill-opacity="0.66" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="28">右上角只显示图标和百分比，保持短、稳、易扫一眼。</text>
+
+  <rect x="114" y="312" width="640" height="360" rx="32" fill="#0B1118" fill-opacity="0.28" stroke="white" stroke-opacity="0.10"/>
+  <text x="156" y="390" fill="#9CCBFF" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="700">对应当前代码里的真实结构</text>
+  <text x="156" y="448" fill="white" fill-opacity="0.78" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="28">`arrow.triangle.swap` 图标</text>
+  <text x="156" y="504" fill="white" fill-opacity="0.78" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="28">11pt 左右的紧凑字号</text>
+  <text x="156" y="560" fill="white" fill-opacity="0.78" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="28">单色前景，避免菜单栏过花</text>
+  <text x="156" y="616" fill="white" fill-opacity="0.78" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="28">配额数字使用等宽风格便于读取</text>
+
+  <g filter="url(#shadow)">
+    <rect x="926" y="160" width="534" height="540" rx="40" fill="url(#card)" stroke="white" stroke-opacity="0.12"/>
+    <text x="972" y="236" fill="white" fill-opacity="0.92" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="34" font-weight="700">MenuBarStatusLabel</text>
+
+    <rect x="972" y="302" width="442" height="130" rx="28" fill="white" fill-opacity="0.06" stroke="white" stroke-opacity="0.10"/>
+    <path d="M1060 344L1078 367L1060 390" stroke="#EEF3F8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M1089 390L1071 367L1089 344" stroke="#EEF3F8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1125" y="380" fill="white" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="62" font-weight="700">72%</text>
+
+    <text x="972" y="500" fill="#9CCBFF" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700">设计意图</text>
+    <text x="972" y="550" fill="white" fill-opacity="0.76" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="24">展开窗口前，先在菜单栏快速确认剩余配额。</text>
+    <text x="972" y="594" fill="white" fill-opacity="0.76" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="24">状态文案够短，不会把右侧菜单栏挤得太满。</text>
+    <text x="972" y="638" fill="white" fill-opacity="0.76" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="24">图标加数字的组合和实际实现保持一致。</text>
+  </g>
+
+  <text x="114" y="840" fill="white" fill-opacity="0.56" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="22">Poster 01 · Menu bar preview</text>
+</svg>
