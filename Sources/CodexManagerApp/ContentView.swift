@@ -25,8 +25,6 @@ struct ContentView: View {
         }
         .padding(18)
         .frame(width: 420, alignment: .topLeading)
-        .background(VisualEffectBackground(material: .hudWindow, blendingMode: .behindWindow))
-        .background(WindowChromeConfigurator())
         .onAppear {
             model.reload()
             model.refreshCurrentSession()
@@ -540,48 +538,5 @@ struct GlassIconButtonStyle: ButtonStyle {
                     .strokeBorder(Color.white.opacity(configuration.isPressed ? 0.18 : 0.09))
             }
             .opacity(configuration.isPressed ? 0.72 : 1)
-    }
-}
-
-struct VisualEffectBackground: NSViewRepresentable {
-    var material: NSVisualEffectView.Material
-    var blendingMode: NSVisualEffectView.BlendingMode
-
-    func makeNSView(context: Context) -> NSVisualEffectView {
-        let view = NSVisualEffectView()
-        view.material = material
-        view.blendingMode = blendingMode
-        view.state = .active
-        view.isEmphasized = true
-        return view
-    }
-
-    func updateNSView(_ view: NSVisualEffectView, context: Context) {
-        view.material = material
-        view.blendingMode = blendingMode
-        view.state = .active
-        view.isEmphasized = true
-    }
-}
-
-struct WindowChromeConfigurator: NSViewRepresentable {
-    func makeNSView(context: Context) -> NSView {
-        let view = NSView(frame: .zero)
-        DispatchQueue.main.async {
-            configure(window: view.window)
-        }
-        return view
-    }
-
-    func updateNSView(_ view: NSView, context: Context) {
-        DispatchQueue.main.async {
-            configure(window: view.window)
-        }
-    }
-
-    private func configure(window: NSWindow?) {
-        window?.isOpaque = false
-        window?.backgroundColor = .clear
-        window?.hasShadow = true
     }
 }
