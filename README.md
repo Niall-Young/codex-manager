@@ -179,6 +179,31 @@ bash scripts/package-app.sh
 
 你可以直接把这个 zip 发给别人使用。
 
+## GitHub 发布
+
+这个项目更适合使用 GitHub `Releases` 分发 macOS 应用，而不是 GitHub `Packages`。
+
+仓库已提供基于 tag 的自动发布流程：
+
+1. 推送一个形如 `v1.0.0` 的 tag
+2. GitHub Actions 会在 macOS runner 上构建应用
+3. 自动生成 zip 并附加到对应 Release
+
+示例：
+
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+### 关于 Packages
+
+GitHub 首页里的 `Packages` 入口并不适合这个仓库当前的主要分发方式。
+
+- 这是一个 macOS app，用户主要需要下载 `.zip` / `.app`
+- 如果只是给 Swift 项目复用 `CodexManagerCore`，Swift Package Manager 直接依赖仓库 tag 即可
+- 因此当前不额外发布 GitHub Packages，避免增加一套没有实际价值的发布流程
+
 ### 需要知道的一点
 
 当前是本地 ad-hoc 签名，不是 Apple Developer ID notarization。
