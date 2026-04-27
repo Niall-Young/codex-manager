@@ -45,11 +45,8 @@ struct ContentView: View {
     private var header: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack(alignment: .firstTextBaseline) {
-                HStack(spacing: 10) {
-                    AppLogoView(size: 22, cornerRadius: 5)
-                    Text(model.strings.text(.appTitle))
-                        .font(AppTypography.title)
-                }
+                Text(model.strings.text(.appTitle))
+                    .font(AppTypography.title)
                 Spacer()
             }
 

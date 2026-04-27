@@ -36,29 +36,48 @@ let variants = [
     IconVariant(name: "icon_512x512@2x.png", pixels: 1024)
 ]
 
-func drawIcon(sourceImage: NSImage, pixels: CGFloat) -> NSImage {
+func drawIcon(sourceImage: NSImage, pixels: CGFloat) -> NSBitmapImageRep? {
+    let pixelCount = Int(pixels.rounded())
     let size = NSSize(width: pixels, height: pixels)
-    let image = NSImage(size: size)
-    image.lockFocus()
+    guard
+        let bitmap = NSBitmapImageRep(
+            bitmapDataPlanes: nil,
+            pixelsWide: pixelCount,
+            pixelsHigh: pixelCount,
+            bitsPerSample: 8,
+            samplesPerPixel: 4,
+            hasAlpha: true,
+            isPlanar: false,
+            colorSpaceName: .deviceRGB,
+            bytesPerRow: 0,
+            bitsPerPixel: 0
+        ),
+        let context = NSGraphicsContext(bitmapImageRep: bitmap)
+    else {
+        return nil
+    }
 
+    bitmap.size = size
+    let previousContext = NSGraphicsContext.current
+    NSGraphicsContext.current = context
     let bounds = CGRect(origin: .zero, size: size)
-    NSGraphicsContext.current?.imageInterpolation = .high
+    context.cgContext.clear(bounds)
+    context.imageInterpolation = .high
+    context.shouldAntialias = true
     sourceImage.draw(
         in: bounds,
         from: CGRect(origin: .zero, size: sourceImage.size),
         operation: .copy,
         fraction: 1
     )
+    NSGraphicsContext.current = previousContext
 
-    image.unlockFocus()
-    return image
+    return bitmap
 }
 
 for variant in variants {
-    let image = drawIcon(sourceImage: sourceImage, pixels: variant.pixels)
     guard
-        let tiffData = image.tiffRepresentation,
-        let bitmap = NSBitmapImageRep(data: tiffData),
+        let bitmap = drawIcon(sourceImage: sourceImage, pixels: variant.pixels),
         let pngData = bitmap.representation(using: .png, properties: [:])
     else {
         fputs("failed to render \(variant.name)\n", stderr)
