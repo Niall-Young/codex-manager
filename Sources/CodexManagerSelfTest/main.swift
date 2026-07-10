@@ -63,6 +63,23 @@ func testRateLimitDecodePrefersCodexBucket() throws {
     try expect(result.preferredCodexSnapshot.primary?.usedPercent == 73, "Expected primary usage to decode.")
 }
 
+func testCodexLocatorIncludesStandaloneCLIForFinderLaunchedApp() throws {
+    let candidates = CodexLocator.executableCandidates(
+        environment: ["PATH": "/usr/bin:/bin:/usr/sbin:/sbin"],
+        homeDirectory: "/Users/example"
+    )
+    let paths = candidates.map(\.path)
+
+    try expect(
+        paths.contains("/Users/example/.codex/packages/standalone/current/bin/codex"),
+        "Expected the Codex standalone CLI to be considered when Finder provides a minimal PATH."
+    )
+    try expect(
+        paths.contains("/opt/homebrew/bin/codex"),
+        "Expected Homebrew's common CLI path to be considered as a fallback."
+    )
+}
+
 func testAccountIDHashIgnoresRawAccountID() throws {
     let root = temporaryDirectory()
     let paths = CodexPaths(applicationSupportDirectory: root.appendingPathComponent("app"), currentCodexHome: root.appendingPathComponent("current"))
@@ -121,6 +138,7 @@ func testFinalizeLoginMovesCompletedAuth() throws {
 let tests: [(String, () throws -> Void)] = [
     ("store persists profiles and active profile", testStorePersistsProfilesAndActiveProfile),
     ("rate limit decode prefers codex bucket", testRateLimitDecodePrefersCodexBucket),
+    ("locator supports standalone CLI with Finder PATH", testCodexLocatorIncludesStandaloneCLIForFinderLaunchedApp),
     ("account id hash ignores raw id", testAccountIDHashIgnoresRawAccountID),
     ("finalize login requires completed auth", testFinalizeLoginRequiresCompletedAuth),
     ("finalize login moves completed auth", testFinalizeLoginMovesCompletedAuth)
