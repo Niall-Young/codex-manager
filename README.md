@@ -4,8 +4,8 @@
 
 `Codex Manager` is a macOS menu bar app for managing multiple local Codex / ChatGPT account profiles with isolated `CODEX_HOME` directories.
 
-![Codex Manager menu bar preview](./docs/images/menubar-poster.svg)
-![Codex Manager popup preview](./docs/images/popup-poster.svg)
+![小饭团站在两个独立、带锁的本地 profile 之间，说明账号环境相互隔离](./docs/images/fantuan-profile-isolation.png)
+![小饭团看着受保护的 profile 在安全检查后切换，说明切换仅在本机进行](./docs/images/fantuan-safe-switch.png)
 
 ## 中文
 
